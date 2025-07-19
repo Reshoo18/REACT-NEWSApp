@@ -40,7 +40,7 @@ constructor(){
 super();
 console.log("hello i am a news constructor from news component");
 this.state ={
-    articles: this.articles,
+    articles: this.article[0].articles,
     loading: false
 }
 }
@@ -48,17 +48,14 @@ this.state ={
     return (
       <div className="container my-3">
         <h2>News Worlds -Top Headlines</h2>
-        <div className="row">
-            <div className="col-md-4">
-              <Newsitem title="Mytitle" description ="mydescription"  imgUrl="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg" newsUrl="TODO"/>
-            </div>
-            <div className="col-md-4">
-              <Newsitem title="Mytitle" description ="mydescription"/>
-            </div>
-            <div className="col-md-4">
-              <Newsitem title="Mytitle" description ="mydescription"/>
-            </div>
         
+        <div className="row">
+          {this.state.articles.map((element)=>{
+            return <div className="col-md-4" key={element.url}>
+                     <Newsitem  title={element.title.slice(0,45)} description ={element.description.slice(0,88)}  imgUrl={element.urlToImage} newsUrl={element.url}/>
+                   </div> 
+  })}
+               
         </div>
       </div>
     )
