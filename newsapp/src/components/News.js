@@ -68,7 +68,7 @@ this.setState({loading : true});
   render() {
     return (
       <div className="container my-3">
-        <h1 className="text-center">News World -Top Headlines</h1>
+        <h1 className="text-center" style={{margin: '35px 0px'}}>News World -Top Headlines</h1>
         {this.state.loading &&<Spinner/>}
         
         
